@@ -9,21 +9,31 @@ pipeline {
   stages {
     stage('Checkout') {
       steps {
-        sh 'git clone $REPO_URL'
+        checkout scm
       }
     }
 
     stage('Set Up') {
       steps {
-        sh 'python -m pip install --upgrade pip'
-        sh 'python -m pip install -r requirements.txt'
+        sh '''
+          python -m venv venv
+          source venv/bin/activate
+          pip install --upgrade pip
+          pip install -r requirements.txt
+        ''' 
+      
+      
       }
     }
 
     stage('Verify') {
       steps {
-        sh 'python -m py_compile app.py'
-        sh 'python -c "from app import app; print(app.url_map)"'
+        sh '''
+        . venv/bin/activate
+        python -m py_compile app.py
+        python -c "from app import app; print(app)"
+        '''
+        
       }
     }
   }

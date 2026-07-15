@@ -9,21 +9,21 @@ pipeline {
   stages {
     stage('Checkout') {
       steps {
-        checkout scm
+        sh 'git clone $REPO_URL'
       }
     }
 
     stage('Set Up') {
       steps {
-        bat 'python -m pip install --upgrade pip'
-        bat 'python -m pip install -r requirements.txt'
+        sh 'python -m pip install --upgrade pip'
+        sh 'python -m pip install -r requirements.txt'
       }
     }
 
     stage('Verify') {
       steps {
-        bat 'python -m py_compile app.py'
-        bat 'python -c "from app import app; print(app.url_map)"'
+        sh 'python -m py_compile app.py'
+        sh 'python -c "from app import app; print(app.url_map)"'
       }
     }
   }

@@ -16,3 +16,4 @@ A small Flask-backed mini game built with HTML, Tailwind CSS, and basic JavaScri
 - Scores are stored by the Flask backend and shown in the leaderboard.
 this line is from hajera
 2nd line
+3rd line

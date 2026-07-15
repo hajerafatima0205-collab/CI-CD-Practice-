@@ -14,3 +14,4 @@ A small Flask-backed mini game built with HTML, Tailwind CSS, and basic JavaScri
 - Click Start Game.
 - Tap the target as many times as possible before the timer ends.
 - Scores are stored by the Flask backend and shown in the leaderboard.
+this line is from hajera
